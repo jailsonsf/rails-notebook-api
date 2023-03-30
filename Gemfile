@@ -16,6 +16,9 @@ gem 'puma', '~> 5.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Repository for collecting Locale data for Ruby on Rails I18n as well as other interesting, Rails related I18n stuff
+gem 'rails-i18n', '~> 6.0'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
