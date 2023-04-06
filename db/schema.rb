@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2023_03_30_121858) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "contacts", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.date "birthdate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "kind_id"
+    t.bigint "kind_id"
     t.index ["kind_id"], name: "index_contacts_on_kind_id"
   end
 
@@ -30,7 +33,7 @@ ActiveRecord::Schema.define(version: 2023_03_30_121858) do
 
   create_table "phones", force: :cascade do |t|
     t.string "number"
-    t.integer "contact_id", null: false
+    t.bigint "contact_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["contact_id"], name: "index_phones_on_contact_id"
