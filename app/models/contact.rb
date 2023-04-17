@@ -1,25 +1,10 @@
 class Contact < ApplicationRecord
-  belongs_to :kind
-  has_many :phones
+  belongs_to(:kind)
+  has_many(:phones, dependent: :delete_all)
+  has_one(:address, dependent: :delete)
 
-  accepts_nested_attributes_for :phones
-
-  def as_json(options={})
-    h = super(options)
-    h[:birthdate] = I18n.l(birthdate) unless birthdate.blank?
-    h
-  end
-  # def to_br
-  #   {
-  #     name: name,
-  #     email: email,
-  #     birthdate: (I18n.l(birthdate) unless birthdate.blank?)
-  #   }
-  # end
-
-  # def author
-  #   'Jailson Soares'
-  # end
+  accepts_nested_attributes_for :phones, allow_destroy: true
+  accepts_nested_attributes_for :address, update_only: true
 
   # def kind_description
   #   kind.description
