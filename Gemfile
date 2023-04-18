@@ -31,9 +31,12 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # ActiveModel::Serializer implementation and Rails hooks
 gem 'active_model_serializers', '~> 0.10.0'
 
+# Rails >= 3 pry initializer
+gem 'pry-rails', :group => :development
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop', require: false
 end
 
