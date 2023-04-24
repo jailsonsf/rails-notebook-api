@@ -2,7 +2,7 @@ namespace :dev do
   desc 'Config development environment'
   task setup: :environment do
     puts 'Recriando banco de dados'
-    %x(rails db:drop db:create db:migrate)
+    `rails db:drop db:create db:migrate`
 
     puts 'Cadastrando os tipos de contato...'
 
@@ -21,7 +21,7 @@ namespace :dev do
       Contact.create!(
         name: Faker::Name.name,
         email: Faker::Internet.email,
-        birthdate: Faker::Date.between(from: (35.years.ago).to_date, to: (18.years.ago).to_date),
+        birthdate: Faker::Date.between(from: 35.years.ago.to_date, to: 18.years.ago.to_date),
         kind: Kind.all.sample
       )
     end
@@ -31,7 +31,7 @@ namespace :dev do
     puts 'Cadastrando os telefones...'
 
     Contact.all.each do |contact|
-      Random.rand(5).times do |i|
+      Random.rand(5).times do |_i|
         Phone.create!(number: Faker::PhoneNumber.cell_phone, contact: contact)
       end
     end

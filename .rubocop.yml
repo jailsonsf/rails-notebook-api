@@ -1,0 +1,18 @@
+AllCops:
+  NewCops: enable
+  Exclude:
+    - bin/*
+    - lib/**/*
+    - config/**/*
+    - test/**/*.rb
+    - db/schema.rb
+    - Gemfile
+
+Layout/EndOfLine:
+  Enabled: False
+
+Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false

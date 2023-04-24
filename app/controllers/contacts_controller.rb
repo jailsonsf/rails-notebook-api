@@ -18,18 +18,18 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
 
     if @contact.save
-      render json: @contact #, include: %i[kind phones address], status: :created, location: @contact
+      render json: @contact # , include: %i[kind phones address], status: :created, location: @contact
     else
-      render json: @contact.errors #, status: :unprocessable_entity
+      render json: @contact.errors # , status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /contacts/1
   def update
     if @contact.update(contact_params)
-      render json: @contact #, include: %i[kind phones address]
+      render json: @contact # , include: %i[kind phones address]
     else
-      render json: @contact.errors #, status: :unprocessable_entity
+      render json: @contact.errors # , status: :unprocessable_entity
     end
   end
 
