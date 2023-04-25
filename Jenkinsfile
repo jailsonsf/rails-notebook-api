@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                discordSend description: "Build Started\n${env.JOB_NAME}", footer: env.BUILD_TAG, image: '', link: env.BUILD_URL, result: currentBuild.currentResult, scmWebUrl: '', thumbnail: '', title: env.JOB_NAME, webhookURL: 'https://discord.com/api/webhooks/1100472630072574063/YnidpSF32GgZ9f_McXjDHFiqafD3fE6XTD1ZTx6M05uQU5YaBRiVwW15dvse2wAmEbD7'
+                discordSend description: "Build Started\n${env.JOB_NAME}", footer: env.BUILD_TAG, image: '', link: env.BUILD_URL, result: currentBuild.currentResult, scmWebUrl: '', thumbnail: '', title: env.JOB_NAME, webhookURL: env.WEBHOOK_URL
 
                 sh 'docker compose down'
                 sh 'docker compose build'
@@ -24,7 +24,7 @@ pipeline {
             
             post {
                 always {
-                    discordSend description: "Build - ${currentBuild.currentResult}\n${env.JOB_NAME}", footer: env.BUILD_TAG, image: '', link: env.BUILD_URL, result: currentBuild.currentResult, scmWebUrl: '', thumbnail: '', title: env.JOB_NAME, webhookURL: 'https://discord.com/api/webhooks/1100472630072574063/YnidpSF32GgZ9f_McXjDHFiqafD3fE6XTD1ZTx6M05uQU5YaBRiVwW15dvse2wAmEbD7'
+                    discordSend description: "Build - ${currentBuild.currentResult}\n${env.JOB_NAME}", footer: env.BUILD_TAG, image: '', link: env.BUILD_URL, result: currentBuild.currentResult, scmWebUrl: '', thumbnail: '', title: env.JOB_NAME, webhookURL: env.WEBHOOK_URL
                 }
             }
         }
