@@ -29,7 +29,7 @@ pipeline {
             }
             
             post {
-                failure {
+                always {
                     discordSend description: "Build - ${currentBuild.currentResult}\n${env.JOB_NAME}", footer: env.BUILD_TAG, image: '', link: env.BUILD_URL, result: currentBuild.currentResult, scmWebUrl: '', thumbnail: '', title: env.JOB_NAME, webhookURL: env.WEBHOOK_URL
                 }
             }
