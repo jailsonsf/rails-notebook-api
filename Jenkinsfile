@@ -38,7 +38,7 @@ pipeline {
         stage('Run API') {
             steps {
                 sh 'docker compose build'
-                sh 'docker compose up -d --add-host host.docker.internal:host-gateway'
+                sh 'docker compose up -d'
             }
             
             post {
