@@ -29,11 +29,23 @@ pipeline {
             }
             
             post {
-                always {
+                failure {
                     discordSend description: "Build - ${currentBuild.currentResult}\n${env.JOB_NAME}", footer: env.BUILD_TAG, image: '', link: env.BUILD_URL, result: currentBuild.currentResult, scmWebUrl: '', thumbnail: '', title: env.JOB_NAME, webhookURL: env.WEBHOOK_URL
                 }
             }
         }
         
+        stage('Run API') {
+            steps {
+                sh 'docker compose build'
+                sh 'docker compose up -d'
+            }
+            
+            post {
+                always {
+                    discordSend description: "Build - ${currentBuild.currentResult}\n${env.JOB_NAME}", footer: env.BUILD_TAG, image: '', link: env.BUILD_URL, result: currentBuild.currentResult, scmWebUrl: '', thumbnail: '', title: env.JOB_NAME, webhookURL: env.WEBHOOK_URL
+                }
+            }
+        }
     }
 }
